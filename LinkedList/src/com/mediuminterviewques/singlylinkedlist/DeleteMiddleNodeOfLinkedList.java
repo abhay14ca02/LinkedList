@@ -71,16 +71,25 @@ public class DeleteMiddleNodeOfLinkedList {
 	// fast.next.next and slow pointer by one steps that is slow=slow.next. We want
 	// to delete middle node of LL. So at the starting point, we will move fast
 	// pointer by 2 steps.
-	private void deleteMiddleOfLinkedList(DelNode head) {
+	private DelNode deleteMiddleOfLinkedList(DelNode head) {
 
+		if (head == null || head.next == null) {
+			// If list is empty or has only one node, return null
+			return null;
+		}
 		DelNode slow = head;
 		DelNode fast = head;
-		fast = fast.next.next;
-		while (fast != null && fast.next != null) {
+		DelNode prev = null;
+
+		// Move slow by 1 and fast by 2
+		while (fast.next != null && fast.next.next.next != null) {
+			prev = slow;
 			slow = slow.next;
 			fast = fast.next.next;
 		}
-		slow.next = slow.next.next;
+		// Delete the middle node
+		prev.next = slow.next;
+		return head;
 	}
 
 	public static void main(String[] args) {
@@ -93,7 +102,7 @@ public class DeleteMiddleNodeOfLinkedList {
 		head = delList.insertNode(10);
 		head = delList.insertNode(15);
 		delList.display(head);
-		delList.deleteMiddleNodeOfLL(head);
+		// delList.deleteMiddleNodeOfLL(head);
 		delList.deleteMiddleOfLinkedList(head);
 		delList.display(head);
 	}
