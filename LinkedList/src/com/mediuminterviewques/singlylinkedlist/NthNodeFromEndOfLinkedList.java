@@ -55,7 +55,7 @@ public class NthNodeFromEndOfLinkedList {
 		if (size < n) {
 			return null;
 		}
-			
+
 		int nthNode = (size - n + 1);
 		// nthNode from start
 		temp = head;
