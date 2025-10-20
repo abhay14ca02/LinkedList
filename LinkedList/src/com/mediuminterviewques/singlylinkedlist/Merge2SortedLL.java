@@ -121,17 +121,17 @@ public class Merge2SortedLL {
 	// Space Complexity : O(N)
 
 	// Solution 3 : Optimal approach
-	private static SortedNode mergeTwoSortedLists(SortedNode head1, SortedNode head2) {
+	private static SortedNode mergeTwoSortedLists(SortedNode l1, SortedNode l2) {
 
-		if (head1 == null) {
-			return head2;
+		if (l1 == null) {
+			return l2;
 		}
-		if (head2 == null) {
-			return head1;
+		if (l2 == null) {
+			return l1;
 		}
 
-		SortedNode temp1 = head1;
-		SortedNode temp2 = head2;
+		SortedNode temp1 = l1;
+		SortedNode temp2 = l2;
 		SortedNode dummyHead = new SortedNode(-1);
 		SortedNode current = dummyHead;
 		while (temp1 != null && temp2 != null) {
@@ -146,11 +146,7 @@ public class Merge2SortedLL {
 				temp2 = temp2.next;
 			}
 		}
-		if (temp1 != null) {
-			current.next = temp1;
-		} else {
-			current.next = temp2;
-		}
+		current.next = (l1 != null) ? l1 : l2;
 		return dummyHead.next;
 	}
 
